@@ -89,30 +89,32 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       {children}
       
       {/* Toast Container */}
-      <div
-        className={cn(
-          'fixed z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:max-w-[420px]',
-          getPositionClasses(position),
-          className
-        )}
-      >
-        {toasts.map((toast) => (
-          <div
-            key={toast.id}
-            className={cn(
-              'mb-2 animate-in slide-in-from-right-full',
-              position.includes('left') && 'slide-in-from-left-full',
-              position.includes('top') && 'slide-in-from-top-full',
-              position.includes('bottom') && 'slide-in-from-bottom-full'
-            )}
-          >
-            <Toast
-              {...toast}
-              onClose={() => removeToast(toast.id)}
-            />
-          </div>
-        ))}
-      </div>
+      {toasts.length > 0 && (
+        <div
+          className={cn(
+            'fixed z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:max-w-[420px] pointer-events-none',
+            getPositionClasses(position),
+            className
+          )}
+        >
+          {toasts.map((toast) => (
+            <div
+              key={toast.id}
+              className={cn(
+                'mb-2 animate-in slide-in-from-right-full pointer-events-auto',
+                position.includes('left') && 'slide-in-from-left-full',
+                position.includes('top') && 'slide-in-from-top-full',
+                position.includes('bottom') && 'slide-in-from-bottom-full'
+              )}
+            >
+              <Toast
+                {...toast}
+                onClose={() => removeToast(toast.id)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </ToastContext.Provider>
   )
 }

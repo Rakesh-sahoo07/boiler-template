@@ -59,7 +59,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         className={cn(navbarVariants({ variant, size }), className)}
         {...props}
       >
-        <div className="container mx-auto px-4">
+        <div className="container max-w-full mx-auto px-4">
           <div className="flex h-full items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
@@ -72,7 +72,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             </div>
 
             {/* Actions */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 relative z-10">
               {actions}
               
               {/* Mobile Menu Button */}

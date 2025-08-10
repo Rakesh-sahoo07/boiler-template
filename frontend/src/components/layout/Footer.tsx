@@ -51,7 +51,7 @@ const FooterContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('container mx-auto px-4', className)}
+      className={cn('container mx-auto max-w-full px-4', className)}
       {...props}
     />
   )
